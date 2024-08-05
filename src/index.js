@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+let currentDate = new Date(2024, 5, 5, 15);
+currentDate = currentDate.getHours();
+let greeting = "";
+const cssStyle = {};
+
+if (currentDate >= 1 && currentDate < 12) {
+  greeting = "Good Morning";
+  cssStyle.color = "green";
+} else if (currentDate >= 12 && currentDate < 19) {
+  greeting = "Good Afternoon";
+  cssStyle.color = "Orange";
+} else {
+  greeting = "Good Night";
+  cssStyle.color = "black";
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <marquee>
+    <h1>
+      Hello! Jitixa <span style={cssStyle}>{greeting}</span>
+    </h1>
+  </marquee>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
